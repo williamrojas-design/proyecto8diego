@@ -9,3 +9,17 @@
   background: linear-gradient(#f0f2f5,#999999);
   min-height: 80vh;
 }
+
+.request{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: gray;
+  color:  white;
+  gap: 25px;
+  border-radius: 5px;
+}
+.request p{
+  font-size: 30px;
+}

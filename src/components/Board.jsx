@@ -16,8 +16,10 @@ const Board = ({ filterTerm }) => {
 
     return (
         <div className="board-container">
-            <NewTaskForm />
-
+            <div className="request">
+                <p>Añadir tarea</p>
+                <NewTaskForm />
+            </div>
             <div className="board">
                 <BoardColumn title="Todo" tasks={filterTasks(columns.todo)} columnKey="todo" />
 
