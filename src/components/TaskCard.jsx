@@ -1,4 +1,5 @@
 import { useKanban } from "../context/useKanban";
+import "../Styles/TaskCard.css"
 
 export default function TaskCard({ task, column }) {
     const { moveTask } = useKanban();
@@ -16,14 +17,14 @@ export default function TaskCard({ task, column }) {
 
     return (
         <div className="task-card">
-            <p>{task.title}</p>
+            <p className="title">{task.title}</p>
             <div className="task-action">
                 {column !== "todo" && (
-                    <button onClick={moveLeft}>←</button>
+                    <button onClick={moveLeft} className="botones">←</button>
                 )}
 
                 {column !== "done" && (
-                    <button onClick={moveRight}>→</button>
+                    <button onClick={moveRight} className="botones">→</button>
                 )}
             </div>
 

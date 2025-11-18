@@ -1,14 +1,17 @@
 import { useState } from 'react'
 import SearchFilter from './components/SearchFilter'
 import Board from './components/Board'
+import "./App.css"
 
 function App() {
-  const[filterTerm, setFilterTerm] = useState("");
+  const [filterTerm, setFilterTerm] = useState("");
 
   return (
     <div className='app-container'>
-      <h1>Kanban Board</h1>
-      <SearchFilter onFilter={setFilterTerm} />
+      <div className='cabecera'>
+        <h1>Kanban Board</h1>
+        <SearchFilter setSearch={setFilterTerm} />
+      </div>
       <Board filterTerm={filterTerm} />
     </div>
   )

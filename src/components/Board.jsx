@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { KanbanContext } from "../context/KanbanContext";
 import BoardColumn from "./BoardColumn";
 import NewTaskForm from "./NewTaskForm";
+import "../Styles/Board.css"
 
 const Board = ({ filterTerm }) => {
     const { columns } = useContext(KanbanContext)

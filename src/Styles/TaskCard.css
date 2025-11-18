@@ -1,0 +1,14 @@
+.task-card {
+  background-color: #e2e4e6;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.task-actions button {
+  margin: 0 2px;
+  cursor: pointer;
+}

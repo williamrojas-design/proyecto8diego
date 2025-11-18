@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import "../Styles/SearchFilter.css"
 
 export default function SearchFilter ({ setSearch }) {
     const inputRef = useRef();
@@ -9,7 +10,8 @@ export default function SearchFilter ({ setSearch }) {
 
     return(
         <div className="search-filter">
-            <input type="text" ref={inputRef} onChange={handleChange} placeholder="Buscar Tareas"/>
+            <input type="text" ref={inputRef} placeholder="Buscar Tareas"/>
+            <button onClick={handleChange}>Filtrar</button>
         </div>
     )
 }

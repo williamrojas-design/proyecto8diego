@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-  
+
 export const KanbanContext = createContext();
 
 // Proveedor
@@ -12,51 +12,31 @@ export function KanbanProvider({ children }) {
 
 
   useEffect(() => {
-    let isMounted = true;
+    const loadData = async () => {
+      const saved = localStorage.getItem("KanbanData");
+      if (saved) {
+        setColumns(JSON.parse(saved));
+        return;
+      }
 
-    const saved = localStorage.getItem("KanbanData");
-
-    if (saved && isMounted) {
-      // Hacer setState asíncrono para evitar el warning
-      setTimeout(() => {
-        if (isMounted) {
-          setColumns(JSON.parse(saved));
-        }
-      }, 0);
-      return;
-    }
-
-    fetch("https://dummyjson.com/todos?limit=5")
-      .then((res) => res.json())
-      .then((data) => {
-        if (!isMounted) return;
-
-        const mapped = {
-          todo: [],
-          doing: [],
-          done: [],
-        };
-
-        data.todos.forEach((t) => {
-          const task = {
-            id: t.id,
-            title: t.todo,
-          };
-
-          if (t.completed) {
-            mapped.done.push(task);
-          } else {
-            mapped.todo.push(task);
-          }
+      try {
+        const res = await fetch("https://dummyjson.com/todos?limit=5");
+        const data = await res.json();
+        const mapped = { todo: [], doing: [], done: [] };
+        data.todos.forEach(t => {
+          const task = { id: t.id, title: t.todo };
+          if (t.completed) mapped.done.push(task);
+          else mapped.todo.push(task);
         });
-
         setColumns(mapped);
-      });
-
-    return () => {
-      isMounted = false;
+      } catch (err) {
+        console.error(err);
+      }
     };
+
+    loadData();
   }, []);
+
 
 
   useEffect(() => {

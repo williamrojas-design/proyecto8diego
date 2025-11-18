@@ -1,0 +1,11 @@
+.board {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 20px;
+}
+.board-container {
+  padding: 20px;
+  background: linear-gradient(#f0f2f5,#999999);
+  min-height: 80vh;
+}
