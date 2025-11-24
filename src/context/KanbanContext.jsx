@@ -75,9 +75,22 @@ export function KanbanProvider({ children }) {
     });
   };
 
+  const updateTask = (taskId, newTitle) => {
+    setColumns((prev) => {
+      const updated = { ...prev };
+      for (const key in updated) {
+        updated[key] = updated[key].map((t) =>
+          t.id === taskId ? { ...t, title: newTitle } : t
+        );
+      }
+      return updated;
+    });
+  };
+
   return (
-    <KanbanContext.Provider value={{ columns, addTask, moveTask }}>
+    <KanbanContext.Provider value={{ columns, addTask, moveTask, updateTask }}>
       {children}
     </KanbanContext.Provider>
   );
-}
+
+};
